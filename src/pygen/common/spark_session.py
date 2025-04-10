@@ -1,8 +1,8 @@
 import os
 import logging
 from pyspark.sql import SparkSession as PySparkSession
-from pygen.common.secrets import get_secret
-from pygen.common.config import get_env
+from secrets import get_secret
+from config import get_env
 
 
 class SparkSession:

@@ -1,6 +1,6 @@
 import logging
 import sys
-from pygen.common.config import get_env
+from config import get_env
 
 
 class GenesisLogger:

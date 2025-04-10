@@ -13,10 +13,6 @@ def get_secret(key: str, scope: str = "genesis-secrets") -> str:
         str: Secret value.
     """
     try:
-        from pyspark.dbutils import DBUtils
-        from spark_session import SparkSession
-        spark = SparkSession()
-        dbutils = DBUtils(spark)
         return dbutils.secrets.get(scope=scope, key=key)
     except Exception:
         return os.getenv(key, "")

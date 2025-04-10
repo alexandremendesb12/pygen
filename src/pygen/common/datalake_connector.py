@@ -1,5 +1,6 @@
 import os
 from pyspark.sql import SparkSession
+from secrets import get_secret
 
 class DataLakeConnector:
     """
@@ -62,10 +63,6 @@ class DataLakeConnector:
             EnvironmentError: If the required secret is not found.
         """
         if self.use_databricks_secrets:
-            from pyspark.dbutils import DBUtils
-            dbutils = DBUtils(self.spark)
-
-            scope = "genesis-secrets"
             key_map = {
                 "dev": "storage-key-dev",
                 "prod": "storage-key-prod"
@@ -73,12 +70,12 @@ class DataLakeConnector:
             secret_key = key_map.get(self.env)
             if not secret_key:
                 raise ValueError(f"No secret key mapping for environment: {self.env}")
-            return dbutils.secrets.get(scope=scope, key=secret_key)
+            return get_secret(key=secret_key)
 
         else:
             env_var_map = {
-                "dev": "AZURE_STORAGE_KEY_DEV",
-                "prod": "AZURE_STORAGE_KEY_PROD"
+                "dev": "AZURE-STORAGE-DEV",
+                "prod": "AZURE-STORAGE-PROD"
             }
             key_var = env_var_map.get(self.env)
             if not key_var:

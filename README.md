@@ -29,9 +29,24 @@ A documentação cobre:
 
 ---
 
+
 ## 🤝 Como Contribuir com a Documentação
 
 Contribuições são bem-vindas! Para atualizar ou adicionar conteúdo à documentação siga os passos disponiveis em: https://alexandremendesb12.github.io/pygen/docs_contributing/
+
+## 🚀 Deploy da documentação
+
+Todo merge na branch `main` dispara automaticamente o deploy da documentação para o ambiente de produção.
+
+Por isso, **contribuições que afetam a doc devem ser revisadas com atenção**.
+
+---
+
+## 🔒 Regras de segurança
+
+- Push direto na `main` é bloqueado
+- Apenas Pull Requests revisados são permitidos
+- Apenas membros autorizados podem aprovar merges (via CODEOWNERS)
 
 ## 📦 Status
 

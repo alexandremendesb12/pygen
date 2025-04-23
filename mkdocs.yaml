@@ -6,3 +6,4 @@ nav:
   - Logger: logger.md
   - SparkSession: spark_session.md
   - FeatureEngineering: feature_engineering.md
+  - Doc Contributing: docs_contributing.md

@@ -36,7 +36,7 @@ df = spark.read.parquet("path/to/file.parquet")
 [INFO] Applied tags: {'env': 'dev', 'owner': 'ds-team'}
 ```
 
-## 🔍 Methods
+## 🧩 Methods
 
 ### `__getattr__`
 Delegates method access to the underlying SparkSession instance.

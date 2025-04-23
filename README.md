@@ -18,7 +18,7 @@ O objetivo principal é facilitar a criação de pipelines eficientes, observáv
 A documentação técnica da PyGen foi publicada via MkDocs + Material Theme.
 
 🔗 Acesse em:
-https://alexandremendessb12github.io/pygen
+https://alexandremendessb12.github.io/pygen
 
 A documentação cobre:
 

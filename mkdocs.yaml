@@ -1,0 +1,8 @@
+site_name: PyGen
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Logger: logger.md
+  - SparkSession: spark_session.md
+  - FeatureEngineering: feature_engineering.md

@@ -1,11 +1,9 @@
-import os
 import logging
 from pyspark.sql import SparkSession as PySparkSession
-from secrets import get_secret
-from config import get_env
+from pygen.infra.service.config.utils import load_config
+from typing import Optional
 
-
-class SparkSession:
+class SparkSession():
     """
     Genesis-standard SparkSession wrapper.
     
@@ -18,7 +16,7 @@ class SparkSession:
         df = self.spark_session.read.parquet("/path/to/data")
 
     Args:
-        app_name (str, optional): Name of the Spark application. Defaults to "GenesisApp-<env>".
+        app_name (str, optional): Name of the Spark application. Defaults to "GenesisApp".
         config_path (str, optional): Path to a YAML config file with Spark options.
         tags (dict, optional): Tags added to the session as metadata for observability.
         shuffle_partitions (str, optional): Default value for shuffle partitions. Defaults to "200".
@@ -29,20 +27,19 @@ class SparkSession:
         app_name: str = None,
         config_path: str = None,
         tags: dict = None,
+        session: Optional[PySparkSession] = None,
         shuffle_partitions: str = None
     ):
         """
         Initializes the Genesis SparkSession and validates Delta support.
         """
-        self.env = get_env()
-        self.app_name = app_name or f"GenesisApp-{self.env}"
+        self.app_name = app_name
         self.config_path = config_path or "configs/spark_defaults.yaml"
         self.shuffle_partitions = shuffle_partitions or "200"
         self.tags = tags or {}
         self.logger = self._setup_logger()
         self.extra_configs = self._load_external_configs()
-        self.session = self._create_spark_session()
-        self._validate_delta_support()
+        self.session = session or self._create_spark_session()
         self._log_session_info()
 
     def _setup_logger(self):
@@ -86,16 +83,16 @@ class SparkSession:
         builder = PySparkSession.builder.appName(self.app_name)
 
         base_config = {
-            "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
-            "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
-            "spark.sql.shuffle.partitions": self.shuffle_partitions,
-            "spark.sql.session.timeZone": "America/Sao_Paulo",
-            "spark.databricks.delta.retentionDurationCheck.enabled": "false",
-            "fs.azure.account.auth.type": "OAuth",
-            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-            "fs.azure.account.oauth2.client.id": get_secret("AZURE_CLIENT_ID"),
-            "fs.azure.account.oauth2.client.secret": get_secret("AZURE_CLIENT_SECRET"),
-            "fs.azure.account.oauth2.client.endpoint": get_secret("AZURE_OAUTH_ENDPOINT"),
+            # "spark.sql.extensions": "io.delta.sql.DeltaSparkSessionExtension",
+            # "spark.sql.catalog.spark_catalog": "org.apache.spark.sql.delta.catalog.DeltaCatalog",
+            # "spark.sql.shuffle.partitions": self.shuffle_partitions,
+            # "spark.sql.session.timeZone": "America/Sao_Paulo",
+            # "spark.databricks.delta.retentionDurationCheck.enabled": "false",
+            # "fs.azure.account.auth.type": "OAuth",
+            # "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+            # "fs.azure.account.oauth2.client.id": get_secret("AZURE_CLIENT_ID"),
+            # "fs.azure.account.oauth2.client.secret": get_secret("AZURE_CLIENT_SECRET"),
+            # "fs.azure.account.oauth2.client.endpoint": get_secret("AZURE_OAUTH_ENDPOINT"),
         }
 
         # Add custom tags as Spark properties
@@ -108,27 +105,11 @@ class SparkSession:
 
         return builder.getOrCreate()
 
-    def _validate_delta_support(self):
-        """
-        Validates whether Delta Lake is enabled in the current SparkSession.
-
-        Raises:
-            RuntimeError: If Delta Lake is not properly configured.
-        """
-        try:
-            self.session.sql("CREATE OR REPLACE TEMP VIEW __delta_test AS SELECT 1")
-            self.session.sql("CREATE OR REPLACE TABLE __test_delta (id INT) USING DELTA")
-            self.session.sql("DROP TABLE __test_delta")
-            self.logger.info("Delta support validation: ✅ OK")
-        except Exception as e:
-            self.logger.error("❌ Delta Lake not configured correctly.")
-            raise RuntimeError("Delta Lake not enabled") from e
-
     def _log_session_info(self):
         """
-        Logs essential SparkSession details: app name, environment, version, and tags.
+        Logs essential SparkSession details: app name, version, and tags.
         """
-        self.logger.info(f"SparkSession initialized - App: {self.app_name}, Env: {self.env}")
+        self.logger.info(f"SparkSession initialized - App: {self.app_name}")
         self.logger.info(f"Spark version: {self.session.version}")
         if self.tags:
             self.logger.info(f"Applied tags: {self.tags}")

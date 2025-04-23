@@ -1,4 +1,5 @@
 import yaml
+import os
 from pyspark.sql import SparkSession
 
 def get_env(default: str = "dev") -> str:
@@ -20,16 +21,23 @@ def get_env(default: str = "dev") -> str:
 
 def load_config(path: str) -> dict:
     """
-    Carrega um arquivo de configuração YAML como dicionário.
+    Loads a YAML configuration file as a dictionary.
+    If the file does not exist or cannot be loaded, returns an empty dict.
 
     Args:
-        path (str): Caminho para o arquivo YAML.
+        path (str): Path to the YAML config file.
 
     Returns:
-        dict: Configurações carregadas.
+        dict: Loaded configuration, or empty dict if file not found or invalid.
     """
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
+    if not os.path.exists(path):
+        return {}
+
+    try:
+        with open(path, "r") as f:
+            return yaml.safe_load(f) or {}
+    except Exception as e:
+        return {}
 
 def get_config_value(key: str, default=None, config: dict = None):
     """

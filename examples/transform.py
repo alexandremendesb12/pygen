@@ -1,5 +1,6 @@
 import sys
 import os
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -30,7 +31,20 @@ class MyFeatureEngineering(TransformData):
         Returns:
             DataFrame: Loaded Spark DataFrame.
         """
-        df = self.load_table('Customers/PotentialCustomers', layer='bronze', format='delta')
+        # df = self.load_table('Customers/PotentialCustomers', layer='bronze', format='delta')
+        dataset = [
+            (1, "Alice"),
+            (2, "Bob"),
+            (3, "Charlie"),
+            (4, "David"),
+            (5, "Eve")
+        ]
+        
+        schema = StructType([
+            StructField("id", IntegerType(), True),
+            StructField("name", StringType(), True)
+        ])
+        df = self.spark_session.createDataFrame(dataset, schema=schema)
         return df
 
 if __name__ == "__main__":

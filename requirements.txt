@@ -1,0 +1,8 @@
+pyspark>=3.1.1
+mlflow>=2.0
+mkdocs
+mkdocs-material
+python-dotenv
+pyyaml
+pandas
+numpy

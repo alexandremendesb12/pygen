@@ -1,6 +1,6 @@
 import logging
 from pyspark.sql import SparkSession as PySparkSession
-from pygen.infra.service.config.utils import load_config
+from pygen.service.config.utils import load_config
 from typing import Optional
 
 class SparkSession():

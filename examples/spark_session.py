@@ -4,7 +4,7 @@ from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from pygen.infra.service.spark.spark_session import SparkSession
+from pygen.service.spark.spark_session import SparkSession
 
 schema = StructType([
     StructField("id", IntegerType(), True),

@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from pygen.infra.service.log.logger import AutoLogMixin
+from pygen.service.log.logger import AutoLogMixin
 
 class FeatureEngineering(AutoLogMixin):
     def __init__(self):

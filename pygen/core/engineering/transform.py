@@ -1,10 +1,10 @@
 import os
 from typing import Dict, List, Optional
 from pyspark.sql.utils import AnalysisException
-from pygen.infra.service.spark.spark_session import SparkSession
-from pygen.infra.service.log.logger import AutoLogMixin
+from pygen.service.spark.spark_session import SparkSession
+from pygen.service.log.logger import AutoLogMixin
 
-class FeatureEngineering(AutoLogMixin):
+class TransformData(AutoLogMixin):
     """
     Base class for feature engineering tasks, providing reusable data loading methods,
     Spark session handling, and automatic logging.
@@ -18,9 +18,9 @@ class FeatureEngineering(AutoLogMixin):
         spark_session: Optional[SparkSession] = None,
         product_name: Optional[str] = None,
     ):
-        self.spark_session = spark_session or SparkSession(app_name=product_name or "FeatureEngineering")
+        self.spark_session = spark_session or SparkSession(app_name=product_name or "TransformData")
         self.dependencies = dependencies or []
-        super().__init__(name=product_name or "FeatureEngineering", level="DEBUG")
+        super().__init__(name=product_name or "TransformData", level="DEBUG")
 
     def _read_data(self, path: str, format: str = "delta"):
         """

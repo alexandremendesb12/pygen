@@ -3,12 +3,12 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from pygen.core.engineering.feature_engineering import FeatureEngineering
+from pygen.core.engineering.transform import TransformData
 
-class MyFeatureEngineering(FeatureEngineering):
+class MyFeatureEngineering(TransformData):
     def __init__(self):
         """
-        Initializes the FeatureEngineering instance.
+        Initializes the TransformData instance.
 
         This calls the superclass constructor and sets the SparkSession instance
         with the name "MyJob" and a tag "owner" with value "ds-team".

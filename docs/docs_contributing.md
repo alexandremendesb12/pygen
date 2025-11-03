@@ -1,39 +1,41 @@
 
-# 📚 Sobre a Documentação da PyGen
+# 📚 About the PyGen Documentation
 
-Este portal de documentação foi construído com [MkDocs](https://www.mkdocs.org) utilizando o tema [Material](https://squidfunk.github.io/mkdocs-material/), com o objetivo de organizar, padronizar e facilitar o uso dos recursos oferecidos pela biblioteca PyGen.
+This documentation portal was built with [MkDocs](https://www.mkdocs.org) using the [Material](https://squidfunk.github.io/mkdocs-material/) theme, with the goal of organizing, standardizing, and facilitating the use of the resources provided by the PyGen library.
 
-## ✨ Objetivos
+## ✨ Objectives
 
-- Documentar os principais componentes da lib (loggers, mixins, sessions, etc.)
-- Servir como referência rápida para quem está utilizando ou integrando PyGen
-- Tornar o conhecimento acessível para engenharia de dados e machine learning
+- Document the main components of the library (loggers, mixins, sessions, etc.)
+- Serve as a quick reference for those using or integrating PyGen
+- Make knowledge easily accessible for data engineering and machine learning teams
 
-## ✍️ Como Contribuir
+## ✍️ How to Contribute
 
-1. Faça checkout do repositório e crie uma branch:
+1. Check out the repository and create a new branch:
    ```bash
-   git checkout -b docs/melhoria-exemplo
+   git checkout -b docs/improvement-example
    ```
 
-2. Edite ou crie arquivos `.md` dentro da pasta `/docs`.
+2. Edit or create `.md` files inside the `/docs` folder.
 
-3. Visualize localmente:
+3. Preview locally:
    ```bash
    mkdocs serve
    ```
 
-4. Gere o build final:
+4. Build the final version:
    ```bash
    mkdocs build
    ```
 
-5. Envie seu PR com as alterações documentadas.
+5. Submit your PR with the documented changes.
 
 ---
 
-## 💡 Boas práticas
+## 💡 Best Practices
 
-- Use linguagem clara e objetiva
-- Adicione exemplos sempre que possível
-- Atualize a navegação no `mkdocs.yml` se criar novas páginas
+- Use clear and concise language
+- Always include examples when possible
+- Update the navigation in `mkdocs.yml` when adding new pages
+
+---

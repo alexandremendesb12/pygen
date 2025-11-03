@@ -1,29 +1,30 @@
-# 🧠 Bem-vindo à Documentação do PyGen
 
-**PyGen** é uma biblioteca interna desenvolvida para padronizar e acelerar os processos de **engenharia de dados** e **machine learning** dentro da Genesis.
+# 🧠 Welcome to the PyGen Documentation
 
-Este portal foi criado com [MkDocs](https://www.mkdocs.org) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) e serve como **referência oficial** para os recursos da biblioteca.
+**PyGen** is an internal library developed to standardize and accelerate **data engineering** and **machine learning** processes within Genesis.
 
----
-
-## ✨ Principais Recursos
-
-- 📦 SparkSession customizada para ambientes locais, cloud e Databricks
-- 🧠 AutoLogMixin: logging automático de métodos
-- 📊 FeatureEngineering base com leitura validada de dados (Delta/Parquet)
-- 🔄 Integrações futuras com MLflow, Airflow, etc.
+This portal was built with [MkDocs](https://www.mkdocs.org) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), and serves as the **official reference** for the library’s resources.
 
 ---
 
-## 📄 Estrutura da Documentação
+## ✨ Main Features
 
-- [`Logger`](logger.md): Como usar o logger com cores, contexto e níveis.
-- [`SparkSession`](spark_session.md): Inicialização de sessões Spark portáveis.
-- [`FeatureEngineering`](feature_engineering.md): Classe base para transformação de dados.
+- 📦 Custom SparkSession for local, cloud, and Databricks environments
+- 🧠 AutoLogMixin: automatic logging of method calls
+- 📊 Base FeatureEngineering class with validated data reading (Delta/Parquet)
+- 🔄 Future integrations with MLflow, Airflow, and more
 
 ---
 
-## 🤝 Como Contribuir
+## 📄 Documentation Structure
 
-Você pode contribuir com a documentação de forma colaborativa!
-Basta acessar a aba [`Docs Contributing`](docs_contributing.md) e seguir os passos recomendados!
+- [`Logger`](logger.md): How to use the logger with colors, context, and levels.
+- [`SparkSession`](spark_session.md): Initialization of portable Spark sessions.
+- [`FeatureEngineering`](feature_engineering.md): Base class for data transformation.
+
+---
+
+## 🤝 How to Contribute
+
+You can contribute to the documentation collaboratively!
+Simply visit the [`Docs Contributing`](docs_contributing.md) section and follow the recommended steps!

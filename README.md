@@ -1,63 +1,64 @@
 
 # 🧠 PyGen & Utilities
 
-**PyGen** é uma biblioteca interna desenvolvida para acelerar e padronizar os processos de engenharia de dados e machine learning dentro dos pipelines da Genesis.
+**PyGen** is an internal library developed to accelerate and standardize data engineering and machine learning processes within Genesis pipelines.
 
-Ela fornece componentes reutilizáveis para:
+It provides reusable components for:
 
-- 📥 Ingestão de dados
-- 🔄 Transformações automatizadas com logging inteligente
-- 🤖 Suporte a workflows de ML com rastreabilidade e contexto
+- 📥 Data ingestion
+- 🔄 Automated transformations with smart logging
+- 🤖 Support for ML workflows with traceability and context
 
-O objetivo principal é facilitar a criação de pipelines eficientes, observáveis e modularizados, com foco em performance e boas práticas de engenharia.
-
+The main goal is to facilitate the creation of efficient, observable, and modular pipelines, focusing on performance and engineering best practices.
 ---
 
-## 📄 Documentação Oficial
+## 📄 Official Documentation
 
-A documentação técnica da PyGen foi publicada via MkDocs + Material Theme.
+The technical documentation for PyGen has been published via MkDocs + Material Theme.
 
-🔗 Acesse em:
+🔗 Access it at:
 https://alexandremendesb12.github.io/pygen
 
-A documentação cobre:
+The documentation covers:
 
-- AutoLogMixin (decorador automático)
-- SparkSession portável
-- FeatureEngineering base para pipelines de transformação
-- Exemplos práticos de uso
-
----
-
-
-## 🤝 Como Contribuir com a Documentação
-
-Contribuições são bem-vindas! Para atualizar ou adicionar conteúdo à documentação siga os passos disponiveis em: https://alexandremendesb12.github.io/pygen/docs_contributing/
-
-## 🚀 Deploy da documentação
-
-Todo merge na branch `main` dispara automaticamente o deploy da documentação para o ambiente de produção.
-
-Por isso, **contribuições que afetam a doc devem ser revisadas com atenção**.
+- AutoLogMixin (automatic decorator)
+- Portable SparkSession
+- FeatureEngineering base for transformation pipelines
+- Practical usage examples
 
 ---
 
-## 🔒 Regras de segurança
 
-- Push direto na `main` é bloqueado
-- Apenas Pull Requests revisados são permitidos
-- Apenas membros autorizados podem aprovar merges (via CODEOWNERS)
+## 🤝 How to Contribute to the Documentation
+
+Contributions are welcome! To update or add content to the documentation, follow the steps available at: https://alexandremendesb12.github.io/pygen/docs_contributing/
+
+## 🚀 Documentation Deploy
+
+Every merge to the `main` branch automatically triggers the deployment of the documentation to the production environment.
+
+Therefore, **contributions that affect the doc must be reviewed carefully.**.
+
+---
+
+## 🔒 Security Rules
+
+- Direct push to `main` is blocked
+- Only reviewed Pull Requests are allowed
+- Only authorized members can approve merges (via CODEOWNERS)
+
+---
 
 ## 📦 Status
 
-Este projeto está em desenvolvimento ativo e evolui continuamente com foco em:
+This project is under active development and continuously evolving with a focus on:
 
 - Performance
-- Logging inteligente
-- Integrações com MLflow, Databricks, AWS, GCP, Azure
+- Smart logging
+- Integrations with MLflow, Databricks, AWS, GCP, Azure
 
 ---
 
-## 📬 Contato
+## 📬 Contact
 
-Para dúvidas, sugestões ou melhorias, entre em contato comigo pelo email alexandrem.bastos2526@gmail.com
+For questions, suggestions, or improvements, contact me via email at alexandrem.bastos2526@gmail.com

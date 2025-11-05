@@ -1,0 +1,31 @@
+name: 🚀 Deploy MkDocs Documentation
+
+on:
+  push:
+    branches:
+      - main    # Só publica quando há commit na branch principal
+  workflow_dispatch: # Permite rodar manualmente pelo GitHub
+
+permissions:
+  contents: write  # Necessário para poder atualizar o branch gh-pages
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧩 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configura ambiente Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Instala dependências MkDocs
+        run: |
+          pip install --upgrade pip
+          pip install mkdocs mkdocs-material
+
+      - name: 🧱 Gera e publica documentação
+        run: mkdocs gh-deploy --force
